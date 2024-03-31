@@ -23,8 +23,7 @@ export interface IPeople {
 }
 
 export interface IGetAllPeopleInput {
-  page?: string
-  search?: string
-  episode?: string
+  page?: string;
+  search?: string;
+  episode?: string;
 }
-

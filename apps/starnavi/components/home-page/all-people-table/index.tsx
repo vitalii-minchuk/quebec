@@ -1,4 +1,6 @@
 import { IPeople } from "../../../actions/types";
+import { getIdFromUrl } from "../../../helpers";
+import { AllPeopleTableActionCell } from "./all-people-table-action-cell";
 
 interface Props {
   people?: IPeople[];
@@ -6,7 +8,7 @@ interface Props {
 
 export const AllPeopleTable = (props: Props) => {
   const { people } = props;
-  
+
   return (
     <table>
       <thead>
@@ -20,6 +22,7 @@ export const AllPeopleTable = (props: Props) => {
           <tr key={el.url}>
             <td>{el.name}</td>
             <td>{el.height}</td>
+            <AllPeopleTableActionCell id={getIdFromUrl(el.url)} />
           </tr>
         ))}
       </tbody>

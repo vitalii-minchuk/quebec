@@ -8,6 +8,7 @@ import { DEFAULT_NUMBER_OF_ITEMS_PER_PAGE } from "../constants";
 interface Props {
   searchParams?: Record<string, string>;
 }
+
 export default async function HomePage(props: Props) {
   const { searchParams } = props;
 
@@ -18,9 +19,11 @@ export default async function HomePage(props: Props) {
   const peopleData = await getAllPeopleAction({
     page: currentPage,
     search: currentSearch,
-    episode: currentEpisode
+    episode: currentEpisode,
   });
-  const pages = peopleData?.count ? Math.ceil(peopleData.count / DEFAULT_NUMBER_OF_ITEMS_PER_PAGE) : undefined
+  const pages = peopleData?.count
+    ? Math.ceil(peopleData.count / DEFAULT_NUMBER_OF_ITEMS_PER_PAGE)
+    : undefined;
 
   return (
     <main>

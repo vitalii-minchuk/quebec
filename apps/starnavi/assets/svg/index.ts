@@ -1,2 +1,2 @@
-export * from './SearchIcon'
-export * from './CloseRoundIcon'
+export * from "./SearchIcon";
+export * from "./CloseRoundIcon";

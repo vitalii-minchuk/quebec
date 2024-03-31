@@ -1,1 +1,1 @@
-export * from './defaultData'
+export * from "./defaultData";
