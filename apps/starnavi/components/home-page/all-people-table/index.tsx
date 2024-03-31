@@ -1,22 +1,25 @@
+import { IPeople } from "../../../actions/types";
+
 interface Props {
-  people: any;
+  people?: IPeople[];
 }
 
 export const AllPeopleTable = (props: Props) => {
   const { people } = props;
+  
   return (
     <table>
       <thead>
         <tr>
-          <th>Tags</th>
-          <th>Countries</th>
+          <th>Name</th>
+          <th>Height</th>
         </tr>
       </thead>
       <tbody>
-        {people?.results?.map((el) => (
+        {people?.map((el) => (
           <tr key={el.url}>
             <td>{el.name}</td>
-            <td>{el.name}</td>
+            <td>{el.height}</td>
           </tr>
         ))}
       </tbody>

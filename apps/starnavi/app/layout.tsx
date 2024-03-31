@@ -1,9 +1,7 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Suspense } from "react";
+import { inter } from "../styles/fonts";
+import "../styles/globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {

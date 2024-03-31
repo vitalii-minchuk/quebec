@@ -1,3 +1,8 @@
+export interface ICommonPaginatedResponse<T> {
+  count: number;
+  results: T;
+}
+
 export interface IPeople {
   birth_year: string;
   eye_color: string;
@@ -17,7 +22,9 @@ export interface IPeople {
   vehicles: string[];
 }
 
-export interface ICommonPaginatedResponse<T> {
-  count: number;
-  results: T;
+export interface IGetAllPeopleInput {
+  page?: string
+  search?: string
+  episode?: string
 }
+

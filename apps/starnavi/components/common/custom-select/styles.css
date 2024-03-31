@@ -1,0 +1,82 @@
+.react-select-container {
+    color: red;
+    font-weight: 400;
+    font-size: 14px;
+    height: 100%;
+}
+.react-select__control {
+    background-color: transparent;
+    border: 1px solid blue !important;
+    border-radius: 8px;
+    height: 100%;
+    cursor: pointer;
+}
+.react-select__control--is-disabled {
+    opacity: 0.6;
+}
+.react-select__value-container {
+    max-width: 70%;
+}
+.react-select__input {
+    color: inherit;
+}
+.react-select__placeholder {
+    color: inherit;
+    white-space: nowrap;
+}
+.react-select__single-value {
+    color: inherit;
+    margin: 0;
+}
+.react-select__indicator-separator,
+.react-select__clear-indicator {
+    display: none;
+}
+.react-select__indicators {
+    color: inherit;
+}
+.react-select__menu {
+    border: 1px solid inherit;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow:
+        0px 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0px 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+.react-select__menu-list {
+    background-color: transparent;
+}
+.react-select__option {
+    cursor: pointer;
+    transition: all 0.4s;
+    p {
+        transition: all 0.4s;
+    }
+}
+.react-select__option:hover,
+.react-select__option--is-focused,
+.react-select__option--is-selected {
+    background-color: red;
+    color: green !important;
+}
+.react-select__control--has-value,
+.react-select__control--is-focused {
+    box-shadow: none;
+    border: 1px solid pink !important;
+}
+.clear-btn {
+    position: absolute;
+    top: 50%;
+    right: 45px;
+    transform: translateY(-50%);
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+.clear-btn > svg {
+        width: 20px;
+        height: 20px;
+        color: inherit;
+        transition: all 0.4s;
+    }

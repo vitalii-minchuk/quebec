@@ -1,9 +1,19 @@
-import { ICommonPaginatedResponse, IPeople } from "./types";
+import { ICommonPaginatedResponse, IGetAllPeopleInput, IPeople } from "./types";
 
-export default async function getAllPeopleAction(page?: string) {
+export default async function getAllPeopleAction(input: IGetAllPeopleInput) {
   try {
+    const {page, search, episode} = input
+
     const requestPage = page ? `/?page=${page}` : "";
-    const requestUrl = `${process.env.BASE_URL!}/people${requestPage}`;
+    let requestUrl = `${process.env.BASE_URL!}/people${requestPage}`;
+
+    if (search) {
+      requestUrl = page ? `${requestUrl}&name__contains=${search}` : `${requestUrl}/?name__contains=${search}`
+    }
+
+    if (episode) {
+      requestUrl = page || search ? `${requestUrl}&films__in=${episode}` : `${requestUrl}/?films__in=${episode}`
+    }
 
     const response = await fetch(requestUrl, {
       method: "GET",
