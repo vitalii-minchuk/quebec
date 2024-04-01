@@ -1,15 +1,15 @@
 "use client";
 
-import ReactFlow, { Controls } from "reactflow";
+import ReactFlow, { Controls, Edge } from "reactflow";
 
 import "reactflow/dist/style.css";
 
 import { ICharacter } from "../../../actions/types";
 import { BackHomeBtn } from "../back-home-btn";
-import { useEffect, useId, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 interface Props {
-  starships: any;
+  starships: { results: { name: string }[] }[];
   character?: ICharacter;
   films: string[];
 }
@@ -19,48 +19,11 @@ export const CharacterInfo = (props: Props) => {
 
   const [data, setData] = useState<{
     character?: ICharacter;
-    films: { episode: string | number; ships?: string[] }[];
+    films: { episode: string | number; starships?: string[] }[];
   }>({
     character,
     films: [],
   });
-
-  const reactGeneratedId = useId();
-
-  // useEffect(() => {
-  //   if (films.length) {
-  //       films.forEach((film, i) => {
-  //         setInitialNodes(prev => [
-  //           ...prev,
-  //           {id: String(film + 1),
-  //             position: { x: (100 * (1 + i)) + 100 * i, y: 200 },
-  //           data: { label: film} }
-  //         ])
-  //         setInitialEdges(prev => [
-  //           ...prev,
-  //           {id: reactGeneratedId,
-  //         source: '1',
-  //       target: `${film + 1}`
-  //         }
-  //         ])
-  //       })
-  //     }
-  // }, [films])
-
-  // useEffect(() => {
-  //   starships?.forEach(episode => {
-  // console.log(episode)
-  //     episode?.results?.forEach((ship, i) => {
-  // setInitialNodes(prev => [
-  //   ...prev,
-  //   {id: String(film + 1),
-  //     position: { x: (100 * (1 + i)) + 100 * i, y: 200 },
-  //   data: { label: ship} }
-  // ])
-  //       console.log(ship)
-  //     })
-  //   })
-  // }, [starships])
 
   useEffect(() => {
     setData((prev) => ({
@@ -73,7 +36,9 @@ export const CharacterInfo = (props: Props) => {
   }, [films, starships]);
 
   const initialData = useMemo(() => {
-    let count = 2;
+    let filmsIdsCount = 2;
+    let starshipsIdsCount = films.length + filmsIdsCount;
+
     const initialNodes = [
       {
         id: "1",
@@ -81,42 +46,44 @@ export const CharacterInfo = (props: Props) => {
         data: { label: character?.name },
       },
     ];
-    const initialEdges: { id: string; source: string; target: string }[] = [];
+    const initialEdges: Edge<{ id: string; source: string; target: string }>[] =
+      [];
 
     data.films.forEach((film, i) => {
       initialNodes.push({
-        id: `${count}`,
+        id: `${filmsIdsCount}`,
         position: { x: 100 * (1 + i) + 100 * i, y: 200 },
-        data: { label: `${film.episode}` },
+        data: { label: `Episode ${film.episode}` },
       });
 
       initialEdges.push({
-        id: reactGeneratedId,
+        id: `e1-${filmsIdsCount}`,
         source: "1",
-        target: `${count}`,
+        target: `${filmsIdsCount}`,
       });
 
-      if (film.starships?.length) {
-        film.starships.forEach((ship, j) => {
+      if (film?.starships?.length) {
+        film.starships.forEach((ship) => {
           initialNodes.push({
-            id: `${count + 1 + j}`,
-            position: { x: 100 * (1 + i) + 100 * i, y: 400 },
+            id: `${starshipsIdsCount}`,
+            position: {
+              x:
+                100 * (starshipsIdsCount - films.length - 1) +
+                100 * (starshipsIdsCount - films.length - 2),
+              y: 400,
+            },
             data: { label: `${ship}` },
           });
-        });
-        // initialEdges.push(
-        //   {id: reactGeneratedId,
-        //     source: `${count}`,
-        //   target: `${count}`
-        //     }
-        // )
-      }
+          initialEdges.push({
+            id: `e${filmsIdsCount}-${starshipsIdsCount}`,
+            source: `${filmsIdsCount}`,
+            target: `${starshipsIdsCount}`,
+          });
 
-      if (film.starships?.length) {
-        count = count + film?.starships?.length;
-      } else {
-        count++;
+          starshipsIdsCount++;
+        });
       }
+      filmsIdsCount++;
     });
 
     return {
@@ -124,7 +91,7 @@ export const CharacterInfo = (props: Props) => {
       initialEdges,
     };
   }, [data]);
-  console.log(initialData);
+
   return (
     <div className="w-screen h-screen">
       <BackHomeBtn />
