@@ -14,7 +14,7 @@ export default async function getAllCharactersAction(
     const { page, search, episode } = input;
 
     const requestPage = page ? `/?page=${page}` : "";
-    let requestUrl = `${process.env.BASE_URL!}/people${requestPage}`;
+    let requestUrl = `${process.env.NEXT_PUBLIC_BASE_URL!}/people${requestPage}`;
 
     if (search) {
       requestUrl = page

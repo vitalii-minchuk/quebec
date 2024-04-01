@@ -9,7 +9,7 @@ export default async function getStarShipsByParamsAction(
   try {
     const { pilot, film } = input;
 
-    let requestUrl = `${process.env.BASE_URL!}/starships`;
+    let requestUrl = `${process.env.NEXT_PUBLIC_BASE_URL!}/starships`;
 
     if (film) {
       requestUrl = `${requestUrl}/?films__in=${film}`;
