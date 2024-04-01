@@ -1,4 +1,4 @@
-export const episodeOptions = [
+export const filterByEpisodeOptions = [
   {
     value: "1",
     label: "Episode 1",

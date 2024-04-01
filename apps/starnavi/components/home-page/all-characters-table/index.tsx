@@ -1,12 +1,12 @@
-import { IPeople } from "../../../actions/types";
+import { ICharacter } from "../../../actions/types";
 import { getIdFromUrl } from "../../../helpers";
-import { AllPeopleTableActionCell } from "./all-people-table-action-cell";
+import { AllCharactersTableActionCell } from "./all-characters-table-action-cell";
 
 interface Props {
-  people?: IPeople[];
+  people?: ICharacter[];
 }
 
-export const AllPeopleTable = (props: Props) => {
+export const AllCharactersTable = (props: Props) => {
   const { people } = props;
 
   return (
@@ -22,7 +22,7 @@ export const AllPeopleTable = (props: Props) => {
           <tr key={el.url}>
             <td>{el.name}</td>
             <td>{el.height}</td>
-            <AllPeopleTableActionCell id={getIdFromUrl(el.url)} />
+            <AllCharactersTableActionCell id={getIdFromUrl(el.url)} />
           </tr>
         ))}
       </tbody>
