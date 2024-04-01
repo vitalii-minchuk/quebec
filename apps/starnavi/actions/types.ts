@@ -3,10 +3,10 @@ export interface ICommonPaginatedResponse<T> {
   results: T;
 }
 
-export interface IPeople {
+export interface ICharacter {
   birth_year: string;
   eye_color: string;
-  films: string;
+  films: string[];
   gender: string;
   hair_color: string;
   height: string;
@@ -22,8 +22,13 @@ export interface IPeople {
   vehicles: string[];
 }
 
-export interface IGetAllPeopleInput {
+export interface IGetAllCharactersInput {
   page?: string;
   search?: string;
   episode?: string;
+}
+
+export interface IGetStarShipsInput {
+  film?: string;
+  pilot?: string;
 }

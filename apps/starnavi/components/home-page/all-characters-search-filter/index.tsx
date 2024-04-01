@@ -2,19 +2,22 @@
 
 import { ChangeEvent, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
+
 import { SearchBar } from "../../common/search-bar";
-import { DEFAULT_SEARCH_DEBOUNCED_TIME } from "../../../constants";
+import {
+  DEFAULT_SEARCH_DEBOUNCED_TIME,
+  filterByEpisodeOptions,
+} from "../../../constants";
 import { useCustomSearchParams } from "../../../hooks";
 import { EAppSearchParams } from "../../../enums";
 import { CustomSelect } from "../../common/custom-select";
-import { episodeOptions } from "./data";
 import { ICustomSelectOption } from "../../common/custom-select/types";
 
 interface Props {
   searchParams?: Record<string, string>;
 }
 
-export const AllPeopleSearchFilter = (props: Props) => {
+export const AllCharactersSearchFilter = (props: Props) => {
   const { searchParams } = props;
 
   const currentEpisode = searchParams?.[EAppSearchParams.EPISODE];
@@ -68,7 +71,9 @@ export const AllPeopleSearchFilter = (props: Props) => {
 
   useEffect(() => {
     if (currentEpisode) {
-      const episode = episodeOptions?.find((el) => el.value === currentEpisode);
+      const episode = filterByEpisodeOptions?.find(
+        (el) => el.value === currentEpisode,
+      );
 
       episode && setSelectedEpisode(episode);
     } else {
@@ -87,7 +92,7 @@ export const AllPeopleSearchFilter = (props: Props) => {
 
       <CustomSelect
         placeholder="Filter by Episode"
-        options={episodeOptions}
+        options={filterByEpisodeOptions}
         value={selectedEpisode}
         onSelect={handleSelectEpisode}
         onClear={currentEpisode ? handleClearEpisode : undefined}

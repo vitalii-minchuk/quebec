@@ -1,7 +1,15 @@
-import axios from "axios";
-import { ICommonPaginatedResponse, IGetAllPeopleInput, IPeople } from "./types";
+"use server";
 
-export default async function getAllPeopleAction(input: IGetAllPeopleInput) {
+import axios from "axios";
+import {
+  ICommonPaginatedResponse,
+  IGetAllCharactersInput,
+  ICharacter,
+} from "./types";
+
+export default async function getAllCharactersAction(
+  input: IGetAllCharactersInput,
+) {
   try {
     const { page, search, episode } = input;
 
@@ -22,7 +30,7 @@ export default async function getAllPeopleAction(input: IGetAllPeopleInput) {
     }
 
     const { data } =
-      await axios.get<ICommonPaginatedResponse<IPeople[]>>(requestUrl);
+      await axios.get<ICommonPaginatedResponse<ICharacter[]>>(requestUrl);
 
     return data;
   } catch (error) {

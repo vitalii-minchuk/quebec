@@ -16,6 +16,7 @@
     "react-dom": "^18.2.0",
     "react-paginate": "^8.2.0",
     "react-select": "^5.8.0",
+    "reactflow": "^11.10.4",
     "use-debounce": "^10.0.0"
   },
   "devDependencies": {
