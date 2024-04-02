@@ -3,15 +3,15 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 
-import { SearchBar } from "../../common/search-bar";
+import { EAppSearchParams } from "@/enums";
+import { useCustomSearchParams } from "@/hooks";
 import {
   DEFAULT_SEARCH_DEBOUNCED_TIME,
   filterByEpisodeOptions,
-} from "../../../constants";
-import { useCustomSearchParams } from "../../../hooks";
-import { EAppSearchParams } from "../../../enums";
-import { CustomSelect } from "../../common/custom-select";
-import { ICustomSelectOption } from "../../common/custom-select/types";
+} from "@/constants";
+import { ICustomSelectOption } from "@/components/common/custom-select/types";
+import { SearchBar } from "@/components/common/search-bar";
+import { CustomSelect } from "@/components/common/custom-select";
 
 interface Props {
   searchParams?: Record<string, string>;

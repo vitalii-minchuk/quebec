@@ -1,3 +1,4 @@
+import { Header } from "@/components/layouts/header";
 import { inter } from "../styles/fonts";
 import "../styles/globals.css";
 
@@ -21,7 +22,10 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

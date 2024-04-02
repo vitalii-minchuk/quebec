@@ -1,7 +1,6 @@
 import getAllPeopleAction from "@/actions/getAllPeopleAction";
 import { EAppSearchParams } from "@/enums";
 import { DEFAULT_NUMBER_OF_ITEMS_PER_PAGE } from "@/constants";
-import { Header } from "@/components/layouts/header";
 import { Pagination } from "@/components/common/pagination";
 import { AllCharactersSearchFilter } from "@/components/home-page/all-characters-search-filter";
 import { AllCharactersTable } from "@/components/home-page/all-characters-table";
@@ -27,13 +26,12 @@ export default async function HomePage(props: Props) {
     : undefined;
 
   return (
-    <>
-      <Header />
-      <main className="container">
-        <AllCharactersSearchFilter searchParams={searchParams} />
-        <AllCharactersTable people={peopleData?.results} />
+    <main className="container">
+      <AllCharactersSearchFilter searchParams={searchParams} />
+      <AllCharactersTable people={peopleData?.results} />
+      {Boolean(peopleData?.results?.length) && (
         <Pagination currentPage={currentPage} pages={pages} />
-      </main>
-    </>
+      )}
+    </main>
   );
 }
