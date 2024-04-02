@@ -1,9 +1,10 @@
-import getAllPeopleAction from "../actions/getAllPeopleAction";
-import { EAppSearchParams } from "../enums";
-import { Pagination } from "../components/common/pagination";
-import { DEFAULT_NUMBER_OF_ITEMS_PER_PAGE } from "../constants";
-import { AllCharactersTable } from "../components/home-page/all-characters-table";
-import { AllCharactersSearchFilter } from "../components/home-page/all-characters-search-filter";
+import getAllPeopleAction from "@/actions/getAllPeopleAction";
+import { EAppSearchParams } from "@/enums";
+import { DEFAULT_NUMBER_OF_ITEMS_PER_PAGE } from "@/constants";
+import { Header } from "@/components/layouts/header";
+import { Pagination } from "@/components/common/pagination";
+import { AllCharactersSearchFilter } from "@/components/home-page/all-characters-search-filter";
+import { AllCharactersTable } from "@/components/home-page/all-characters-table";
 
 interface Props {
   searchParams?: Record<string, string>;
@@ -26,10 +27,13 @@ export default async function HomePage(props: Props) {
     : undefined;
 
   return (
-    <main>
-      <AllCharactersSearchFilter searchParams={searchParams} />
-      <AllCharactersTable people={peopleData?.results} />
-      <Pagination currentPage={currentPage} pages={pages} />
-    </main>
+    <>
+      <Header />
+      <main className="container">
+        <AllCharactersSearchFilter searchParams={searchParams} />
+        <AllCharactersTable people={peopleData?.results} />
+        <Pagination currentPage={currentPage} pages={pages} />
+      </main>
+    </>
   );
 }

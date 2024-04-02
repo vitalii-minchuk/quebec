@@ -31,7 +31,7 @@ export const Pagination = (props: Props) => {
   const isLastPage = Number(currentPage) === pages;
 
   return (
-    <div key={currentPage}>
+    <div key={currentPage} className="py-4 flex justify-center">
       <ReactPaginate
         breakLabel="..."
         onPageChange={handlePageChange}

@@ -82,7 +82,7 @@ export const AllCharactersSearchFilter = (props: Props) => {
   }, [currentEpisode]);
 
   return (
-    <div>
+    <div className="py-4 h-16 flex gap-4">
       <SearchBar
         placeholder="Search..."
         searchValue={searchValue}

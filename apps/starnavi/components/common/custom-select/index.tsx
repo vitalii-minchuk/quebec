@@ -64,7 +64,7 @@ export const CustomSelect = (props: Props) => {
   if (!isMounted) return null;
 
   return (
-    <div className="relative">
+    <div className="relative flex-grow">
       <label>
         {Boolean(label) && <span>{label}</span>}
         <Select
