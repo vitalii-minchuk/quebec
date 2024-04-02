@@ -1,12 +1,11 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
 import ReactFlow, { Controls, Edge } from "reactflow";
 
-import "reactflow/dist/style.css";
+import type { ICharacter } from "@/actions/types";
 
-import { ICharacter } from "../../../actions/types";
-import { BackHomeBtn } from "../back-home-btn";
-import { useEffect, useMemo, useState } from "react";
+import "reactflow/dist/style.css";
 
 interface Props {
   starships: { results: { name: string }[] }[];
@@ -93,8 +92,7 @@ export const CharacterInfo = (props: Props) => {
   }, [data]);
 
   return (
-    <div className="w-screen h-screen">
-      <BackHomeBtn />
+    <div className="w-screen h-[calc(100vh_-_3rem)]">
       <ReactFlow
         nodes={initialData.initialNodes}
         edges={initialData.initialEdges}

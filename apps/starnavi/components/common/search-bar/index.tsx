@@ -14,7 +14,7 @@ export const SearchBar = (props: Props) => {
   const { placeholder = "", searchValue, label, onChange, onClear } = props;
 
   return (
-    <div className="relative flex gap-2 items-center">
+    <div className="relative flex gap-2 items-center flex-grow">
       <SearchIcon />
       <label htmlFor="search">{label}</label>
       <input

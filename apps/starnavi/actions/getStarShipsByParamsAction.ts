@@ -1,6 +1,6 @@
 "use server";
 
-import axios from "axios";
+import { axiosInstance } from "@/lib/axios";
 import { IGetStarShipsInput } from "./types";
 
 export default async function getStarShipsByParamsAction(
@@ -8,20 +8,14 @@ export default async function getStarShipsByParamsAction(
 ) {
   try {
     const { pilot, film } = input;
+    const requestUrl = "/starships";
 
-    let requestUrl = `${process.env.NEXT_PUBLIC_BASE_URL!}/starships`;
+    const params = {
+      ...(pilot ? { pilots__in: pilot } : {}),
+      ...(film ? { films__in: film } : {}),
+    };
 
-    if (film) {
-      requestUrl = `${requestUrl}/?films__in=${film}`;
-    }
-
-    if (pilot) {
-      requestUrl = film
-        ? `${requestUrl}&pilots__in=${pilot}`
-        : `${requestUrl}/?pilots__in=${pilot}`;
-    }
-
-    const { data } = await axios.get<any>(requestUrl);
+    const { data } = await axiosInstance.get<any>(requestUrl, { params });
 
     return data;
   } catch (error) {
