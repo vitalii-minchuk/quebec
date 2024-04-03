@@ -1,8 +1,8 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
-import getCharacterByIdAction from "../../actions/getCharacterByIdAction";
-import getStarShipsByParamsAction from "../../actions/getStarShipsByParamsAction";
-import { CharacterInfo } from "../../components/character-page/character-info";
+import getCharacterByIdAction from "@/actions/getCharacterByIdAction";
+import getStarShipsByParamsAction from "@/actions/getStarShipsByParamsAction";
+import { CharacterInfo } from "@/components/character-page/character-info";
 
 interface Props {
   params: { id: string };

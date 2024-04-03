@@ -1,6 +1,6 @@
 import { type ChangeEventHandler } from "react";
 
-import { CloseRoundIcon, SearchIcon } from "../../../assets/svg";
+import { CloseRoundIcon, SearchIcon } from "@/assets/svg";
 
 interface Props {
   label?: string;
@@ -14,7 +14,7 @@ export const SearchBar = (props: Props) => {
   const { placeholder = "", searchValue, label, onChange, onClear } = props;
 
   return (
-    <div className="relative flex gap-2 items-center flex-grow">
+    <div className="relative flex gap-2 items-center flex-grow border border-gray-400 rounded-md px-2 h-[38px]">
       <SearchIcon />
       <label htmlFor="search">{label}</label>
       <input
@@ -22,10 +22,10 @@ export const SearchBar = (props: Props) => {
         value={searchValue ?? ""}
         placeholder={`${searchValue ? "" : placeholder}`}
         onChange={onChange}
-        className="w-full"
+        className="w-full outline-none"
       />
       {Boolean(searchValue) && (
-        <button className="clear-btn" onClick={onClear}>
+        <button onClick={onClear} className=" text-gray-400">
           <CloseRoundIcon />
         </button>
       )}

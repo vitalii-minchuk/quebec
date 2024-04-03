@@ -6,8 +6,8 @@ import Select from "react-select";
 import "./styles.css";
 
 import type { ICustomSelectOption } from "./types";
-import { useIsMounted } from "../../../hooks";
-import { CloseRoundIcon } from "../../../assets/svg";
+import { CloseRoundIcon } from "@/assets/svg";
+import { useIsMounted } from "@/hooks";
 
 interface Props {
   options: ICustomSelectOption[];
@@ -21,7 +21,6 @@ interface Props {
   name?: string;
   tabIndex?: number;
   isDisabled?: boolean;
-  isSearchable?: boolean;
   isMulti?: boolean;
   label?: string;
 }
@@ -39,7 +38,6 @@ export const CustomSelect = (props: Props) => {
     tabIndex,
     isLoading = false,
     isDisabled = false,
-    isSearchable = false,
     isMulti = false,
     onClear,
   } = props;
@@ -81,7 +79,6 @@ export const CustomSelect = (props: Props) => {
           isLoading={isLoading}
           isDisabled={isDisabled}
           isClearable
-          isSearchable={isSearchable}
           isMulti={isMulti}
         />
       </label>

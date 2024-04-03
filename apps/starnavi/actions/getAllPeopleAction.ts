@@ -1,11 +1,11 @@
 "use server";
 
-import { axiosInstance } from "@/lib/axios";
-import {
+import type {
   ICharacter,
   ICommonPaginatedResponse,
   IGetAllCharactersInput,
 } from "./types";
+import { axiosInstance } from "@/lib/axios";
 
 export default async function getAllCharactersAction(
   input: IGetAllCharactersInput,
@@ -26,6 +26,7 @@ export default async function getAllCharactersAction(
 
     return data;
   } catch (error) {
+    // TODO handle errors properly
     console.log(error);
   }
 }
