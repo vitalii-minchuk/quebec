@@ -1,12 +1,12 @@
 .react-select-container {
-    color: red;
+    color: inherit;
     font-weight: 400;
     font-size: 14px;
     height: 100%;
 }
 .react-select__control {
     background-color: transparent;
-    border: 1px solid blue !important;
+    border: 1px solid #A0AEC0 !important;
     border-radius: 8px;
     height: 100%;
     cursor: pointer;
@@ -56,13 +56,13 @@
 .react-select__option:hover,
 .react-select__option--is-focused,
 .react-select__option--is-selected {
-    background-color: red;
-    color: green !important;
+    background-color: #CBD5E0 !important;
+    color: inherit !important;
 }
 .react-select__control--has-value,
 .react-select__control--is-focused {
     box-shadow: none;
-    border: 1px solid pink !important;
+    border: 1px solid #A0AEC0 !important;
 }
 .clear-btn {
     position: absolute;
@@ -77,6 +77,6 @@
 .clear-btn > svg {
         width: 20px;
         height: 20px;
-        color: inherit;
+        color: transparent;
         transition: all 0.4s;
     }

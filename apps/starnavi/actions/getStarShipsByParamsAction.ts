@@ -1,7 +1,11 @@
 "use server";
 
+import type {
+  ICommonPaginatedResponse,
+  IGetStarShipsInput,
+  IStarship,
+} from "./types";
 import { axiosInstance } from "@/lib/axios";
-import { IGetStarShipsInput } from "./types";
 
 export default async function getStarShipsByParamsAction(
   input: IGetStarShipsInput,
@@ -15,10 +19,13 @@ export default async function getStarShipsByParamsAction(
       ...(film ? { films__in: film } : {}),
     };
 
-    const { data } = await axiosInstance.get<any>(requestUrl, { params });
+    const { data } = await axiosInstance.get<
+      ICommonPaginatedResponse<IStarship[]>
+    >(requestUrl, { params });
 
     return data;
   } catch (error) {
+    // TODO handle errors properly
     console.log(error);
   }
 }

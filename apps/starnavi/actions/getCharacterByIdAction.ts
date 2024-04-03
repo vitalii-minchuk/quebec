@@ -1,6 +1,6 @@
 "use server";
 
-import { ICharacter } from "./types";
+import type { ICharacter } from "./types";
 import { axiosInstance } from "@/lib/axios";
 
 export default async function getCharacterByIdAction(id: string) {
@@ -11,6 +11,7 @@ export default async function getCharacterByIdAction(id: string) {
 
     return data;
   } catch (error) {
+    // TODO handle errors properly
     console.log(error);
   }
 }

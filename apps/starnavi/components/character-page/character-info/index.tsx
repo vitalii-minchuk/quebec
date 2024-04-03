@@ -3,12 +3,16 @@
 import { useEffect, useMemo, useState } from "react";
 import ReactFlow, { Controls, Edge } from "reactflow";
 
-import type { ICharacter } from "@/actions/types";
+import type {
+  ICharacter,
+  ICommonPaginatedResponse,
+  IStarship,
+} from "@/actions/types";
 
 import "reactflow/dist/style.css";
 
 interface Props {
-  starships: { results: { name: string }[] }[];
+  starships: (ICommonPaginatedResponse<IStarship[]> | undefined)[];
   character?: ICharacter;
   films: string[];
 }

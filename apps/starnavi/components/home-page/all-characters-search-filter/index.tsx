@@ -3,13 +3,13 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 
+import type { ICustomSelectOption } from "@/components/common/custom-select/types";
 import { EAppSearchParams } from "@/enums";
 import { useCustomSearchParams } from "@/hooks";
 import {
   DEFAULT_SEARCH_DEBOUNCED_TIME,
   filterByEpisodeOptions,
 } from "@/constants";
-import { ICustomSelectOption } from "@/components/common/custom-select/types";
 import { SearchBar } from "@/components/common/search-bar";
 import { CustomSelect } from "@/components/common/custom-select";
 
@@ -96,7 +96,6 @@ export const AllCharactersSearchFilter = (props: Props) => {
         value={selectedEpisode}
         onSelect={handleSelectEpisode}
         onClear={currentEpisode ? handleClearEpisode : undefined}
-        isSearchable
       />
     </div>
   );

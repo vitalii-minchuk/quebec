@@ -2,10 +2,10 @@
 
 import ReactPaginate from "react-paginate";
 
-import "./styles.css";
+import { useCustomSearchParams } from "@/hooks";
+import { EAppSearchParams } from "@/enums";
 
-import { useCustomSearchParams } from "../../../hooks";
-import { EAppSearchParams } from "../../../enums";
+import "./styles.css";
 
 interface Props {
   pages?: number;
@@ -42,8 +42,8 @@ export const Pagination = (props: Props) => {
         nextLabel={">"}
         containerClassName={"pagination"}
         pageLinkClassName={"pagination-page-number"}
-        previousLinkClassName={`pagination-page-number ${isFirstPage && "pagination-disabled"}`}
-        nextLinkClassName={`pagination-page-number ${isLastPage && "pagination-disabled"}`}
+        previousLinkClassName={`pagination-page-number ${isFirstPage ? "pagination-disabled" : ""}`}
+        nextLinkClassName={`pagination-page-number ${isLastPage ? "pagination-disabled" : ""}`}
         activeLinkClassName={"pagination-active"}
         breakClassName={"break-class"}
       />
